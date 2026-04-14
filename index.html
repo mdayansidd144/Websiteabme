@@ -2,20 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Mohd Ayan | MERN + ML Portfolio | Light Navy Elegance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Mohd Ayan | Full-Stack ML Engineer | Portfolio</title>
+  <!-- Preconnect to critical origins for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <!-- Optimized font loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (lightweight) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP with deferred loading for performance -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <style>
+    /* Critical CSS inlined for fast paint */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
+
+    /* Mobile-first responsive design */
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, 
         rgb(98, 127, 232) 0%,     
         rgb(107, 145, 222) 15%,   
@@ -30,44 +41,51 @@
       overflow-x: hidden;
       min-height: 100vh;
     }
+
+    /* Navbar - mobile optimized */
     .navbar {
       background: #2c5a8c;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 1rem 3rem;
+      padding: 0.8rem 1rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      gap: 0.8rem;
       border-bottom: 2px solid #ffd966;
+      min-height: 60px;
     }
 
     .logo {
       font-weight: 800;
-      font-size: 1.7rem;
+      font-size: 1.2rem;
       color: #ffffff;
       letter-spacing: -0.3px;
     }
     .logo i {
       color: #ffd966;
-      margin-right: 8px;
+      margin-right: 6px;
+      font-size: 1rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 2.2rem;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .nav-links a {
       text-decoration: none;
       font-weight: 600;
       color: #f0f4fa;
-      transition: 0.3s;
-      font-size: 1rem;
-      padding: 0.5rem 0;
+      transition: 0.2s;
+      font-size: 0.85rem;
+      padding: 0.4rem 0;
       position: relative;
+      white-space: nowrap;
     }
     .nav-links a::after {
       content: '';
@@ -75,249 +93,272 @@
       bottom: 0;
       left: 0;
       width: 0%;
-      height: 2.5px;
+      height: 2px;
       background: #ffd966;
-      transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transition: 0.2s;
     }
     .nav-links a:hover::after, .nav-links a.active::after {
       width: 100%;
     }
-    .nav-links a:hover, .nav-links a.active {
-      color: #ffefb9;
-      transform: translateY(-2px);
-    }
-    .btn-primary, .btn-outline {
-      border-radius: 40px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0.7rem 1.6rem;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .btn-primary {
-      background: linear-gradient(95deg, #2a5f8a, #3a7faa);
-      color: white;
-      border: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    }
-    .btn-primary:hover {
-      transform: translateY(-4px);
-      background: linear-gradient(95deg, #3a6f9a, #4a8fba);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-    }
-    .btn-outline {
-      border: 1.5px solid #2a5f8a;
-      background: rgba(255,255,255,0.9);
-      color: #2a5f8a;
-    }
-    .btn-outline:hover {
-      background: #2a5f8a;
-      color: white;
-      transform: scale(1.02);
-    }
 
+    /* Container with proper padding for mobile */
     .container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 2rem 2.5rem 4rem;
-    }
-    .flashcard, .about-card, .contact-card, .skill-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(2px);
-      border-radius: 28px;
-      padding: 2rem;
-      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border: 1px solid rgba(42, 95, 138, 0.2);
-      margin-bottom: 2rem;
-    }
-    .flashcard:hover, .skill-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 45px -12px rgba(0, 0, 0, 0.2);
-      border-color: #2a5f8a;
+      padding: 1rem;
     }
 
-    /* FIXED Image container - properly centered with object-fit contain */
+    /* Cards - touch friendly */
+    .flashcard, .skill-card {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(4px);
+      border-radius: 24px;
+      padding: 1.25rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s;
+      border: 1px solid rgba(42, 95, 138, 0.15);
+      margin-bottom: 1.25rem;
+    }
+    .flashcard:active, .skill-card:active {
+      transform: scale(0.99);
+    }
+
+    /* Optimized image containers */
     .img-container-rounded {
       width: 100%;
-      height: 180px;
+      height: 140px;
       border-radius: 20px;
       overflow: hidden;
       background: linear-gradient(135deg, #eef2ff, #dce6f5);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease;
-      position: relative;
+      margin-bottom: 0.8rem;
     }
     .img-container-rounded img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: center;
-      display: block;
-      transition: transform 0.4s;
-      background: transparent;
     }
-    .img-container-rounded:hover img {
-      transform: scale(1.03);
-    }
-    .img-container-rounded img.error-img {
-      display: none;
-    }
-    .img-container-rounded .fallback-icon {
-      font-size: 3.5rem;
-      color: #2a5f8a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-    }
+
+    /* Avatar - responsive sizing */
     .avatar-large {
-      width: 480px;
-      height: 480px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      border: 5px solid #2a5f8a;
+      border: 4px solid #2a5f8a;
       overflow: hidden;
       background: linear-gradient(135deg, #eef2ff, #dce6f5);
-      box-shadow: 0 25px 45px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .avatar-large:hover {
-      transform: scale(1.02);
-      border-color: #ffd966;
-      box-shadow: 0 30px 50px rgba(0,0,0,0.25);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      margin: 0 auto;
     }
     .avatar-large img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      display: block;
     }
 
+    /* Hero section - mobile optimized */
     .hero-flex {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 2.5rem;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    .hero-flex > div:first-child {
+      text-align: center;
     }
 
+    /* Typography - responsive */
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0a2540;
+      line-height: 1.2;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-left: 4px solid #2a5f8a;
+      padding-left: 0.8rem;
+      color: #0a2540;
+    }
+
+    /* Buttons - touch friendly size */
+    .btn-primary, .btn-outline {
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+      min-height: 44px;
+    }
+    .btn-primary {
+      background: linear-gradient(95deg, #2a5f8a, #3a7faa);
+      color: white;
+      border: none;
+    }
+    .btn-primary:active {
+      transform: scale(0.96);
+    }
+    .btn-outline {
+      border: 1.5px solid #2a5f8a;
+      background: rgba(255,255,255,0.9);
+      color: #2a5f8a;
+    }
+
+    /* Skills grid - mobile first */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
     }
 
     .skill-title {
-      font-weight: 800;
-      font-size: 1.3rem;
-      margin: 0.8rem 0 0.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0.5rem 0 0.3rem;
       color: #0a2540;
     }
     .skill-desc {
       color: #2c3e66;
+      font-size: 0.85rem;
       line-height: 1.4;
-      font-size: 0.9rem;
     }
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.8rem;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
     }
     .tech-tag {
       background: rgba(42, 95, 138, 0.12);
-      padding: 0.25rem 0.8rem;
+      padding: 0.2rem 0.7rem;
       border-radius: 30px;
       font-size: 0.7rem;
       color: #2a5f8a;
       font-weight: 600;
     }
 
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      border-left: 5px solid #2a5f8a;
-      padding-left: 1rem;
-      color: #0a2540;
-    }
-
     .achievement-badge {
       background: linear-gradient(135deg, #2a5f8a20, #3a7faa10);
       border-left: 4px solid #ffd966;
-      padding: 1rem;
+      padding: 0.8rem;
       border-radius: 16px;
-      margin: 1rem 0;
+      margin: 0.8rem 0;
+      font-size: 0.85rem;
     }
 
     .project-link {
-      display: inline-block;
       background: #eef2ff;
-      padding: 0.8rem 1.2rem;
+      padding: 0.7rem 1rem;
       border-radius: 16px;
       margin: 0.5rem 0;
-      transition: all 0.3s;
-      width: 100%;
-    }
-    .project-link:hover {
-      background: #2a5f8a;
-      transform: translateX(8px);
-    }
-    .project-link:hover a {
-      color: white;
+      transition: 0.2s;
     }
     .project-link a {
       text-decoration: none;
       color: #2a5f8a;
       font-weight: 600;
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       word-break: break-word;
     }
 
     .input-premium {
       width: 100%;
-      padding: 1rem;
+      padding: 0.9rem;
       border-radius: 28px;
       border: 1px solid #c0cfe0;
       background: white;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
     }
 
     footer {
       background: #2c5a8c;
-      padding: 2rem;
+      padding: 1.5rem;
       text-align: center;
       color: #c0d0f0;
+      font-size: 0.8rem;
     }
 
-    @media (max-width: 1100px) {
-      .avatar-large { width: 380px; height: 380px; }
+    /* Tablet and desktop enhancements */
+    @media (min-width: 768px) {
+      .container {
+        padding: 1.5rem 2rem;
+      }
+      .hero-flex {
+        flex-direction: row;
+        text-align: left;
+        gap: 2rem;
+      }
+      .hero-flex > div:first-child {
+        text-align: left;
+      }
+      .avatar-large {
+        width: 280px;
+        height: 280px;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .navbar {
+        padding: 1rem 2rem;
+      }
+      .nav-links {
+        gap: 1.8rem;
+      }
+      .nav-links a {
+        font-size: 1rem;
+      }
+      .logo {
+        font-size: 1.5rem;
+      }
     }
-    @media (max-width: 900px) {
-      .navbar { padding: 1rem 1.5rem; }
-      .avatar-large { width: 280px; height: 280px; }
-      .hero-flex { justify-content: center; text-align: center; }
-      .container { padding: 1rem; }
+
+    @media (min-width: 1024px) {
+      .avatar-large {
+        width: 380px;
+        height: 380px;
+      }
+      .container {
+        padding: 2rem 2.5rem;
+      }
     }
-    @media (max-width: 600px) {
-      .avatar-large { width: 220px; height: 220px; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: 1.6rem; }
+
+    /* Reduce motion if user prefers */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Loading optimization */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
   </style>
 </head>
@@ -336,341 +377,257 @@
 
 <main id="app-root" class="container"></main>
 <footer>
-  <p>© 2026 Mohd Ayan Siddiqui — MERN · Machine Learning · LLMs — Let's innovate together ✨</p>
+  <p>© 2026 Mohd Ayan Siddiqui — MERN · ML · LLMs — Innovate together ✨</p>
 </footer>
 
 <script>
-  gsap.registerPlugin(ScrollTrigger);
+  // Performance: Defer non-critical JS, use efficient selectors
+  (function() {
+    // Constants
+    const leetcodeUrl = "https://leetcode.com/u/mohdayan-sidd144/";
+    const githubUrl = "https://github.com/mdayansidd144";
+    const personalPhone = "+91 8318230087";
+    const personalEmail = "ayansiddiqui1411@gmail.com";
+    const sentimentAnalysisUrl = "https://sentiment-analysis-model-vsggmwybur9xjgeflwunzs.streamlit.app/";
+    const inventoryManagementUrl = "https://speak-snap-store-vhr5-8gqxjcwuf-mdayansidd144s-projects.vercel.app";
 
-  const leetcodeUrl = "https://leetcode.com/u/mohdayan-sidd144/";
-  const githubUrl = "https://github.com/mdayansidd144";
-  const personalPhone = "+91 8318230087";
-  const personalEmail = "ayansiddiqui1411@gmail.com";
-  
-  // Project Links
-  const sentimentAnalysisUrl = "https://sentiment-analysis-model-vsggmwybur9xjgeflwunzs.streamlit.app/";
-  const inventoryManagementUrl = "https://speak-snap-store-vhr5-8gqxjcwuf-mdayansidd144s-projects.vercel.app";
+    // Skills data (lightweight)
+    const skillsDetailed = [
+      { name: "Programming Languages", desc: "C, Python, Java, JavaScript — strong algorithmic foundation.", tags: ["C", "Python", "Java", "JS"], img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "Databases", desc: "SQL & MongoDB expertise, query optimization, data modeling.", tags: ["SQL", "MongoDB"], img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+      { name: "MERN Stack", desc: "Full-stack apps with MongoDB, Express, React, Node.js.", tags: ["React", "Node.js", "Express", "MongoDB"], img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Machine Learning", desc: "TensorFlow, Pandas, NumPy, Scikit-learn pipelines.", tags: ["TensorFlow", "Pandas", "Scikit-learn"], img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+      { name: "LLMs & AI", desc: "Whisper, LLaMA, YOLO — speech recognition & vision.", tags: ["Whisper", "LLaMA", "YOLO"], img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+      { name: "Version Control", desc: "Git & GitHub workflows, collaboration, CI/CD basics.", tags: ["Git", "GitHub"], img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "Communication", desc: "Fluent English, technical documentation, leadership.", tags: ["English", "Public Speaking"], img: "https://cdn-icons-png.flaticon.com/512/1995/1995572.png" },
+      { name: "LeetCode", desc: "100+ solved problems (Java, SQL) — DSA mastery.", tags: ["Java", "SQL", "Algorithms"], img: "https://trypear.ai/images/leetcode.png" }
+    ];
 
-  // Using high-quality online images that actually exist (free CDN images)
-  const skillsDetailed = [
-    { name: "Programming Languages", desc: "C, Python, Java, JavaScript — strong algorithmic foundation.", tags: ["C", "Python", "Java", "JS"], imgPlaceholder: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-    { name: "Databases", desc: "SQL & MongoDB expertise, query optimization, data modeling.", tags: ["SQL", "MongoDB"], imgPlaceholder: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-    { name: "MERN Stack", desc: "Full-stack apps with MongoDB, Express, React, Node.js.", tags: ["React", "Node.js", "Express", "MongoDB"], imgPlaceholder: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "Machine Learning", desc: "TensorFlow, Pandas, NumPy, Scikit-learn pipelines.", tags: ["TensorFlow", "Pandas", "Scikit-learn"], imgPlaceholder: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
-    { name: "LLMs & AI", desc: "Whisper, LLaMA, YOLO — speech recognition & vision.", tags: ["Whisper", "LLaMA", "YOLO"], imgPlaceholder: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
-    { name: "Version Control", desc: "Git & GitHub workflows, collaboration, CI/CD basics.", tags: ["Git", "GitHub"], imgPlaceholder: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-    { name: "Communication", desc: "Fluent English, technical documentation, leadership.", tags: ["English", "Public Speaking"], imgPlaceholder: "https://cdn-icons-png.flaticon.com/512/1995/1995572.png" },
-    { name: "LeetCode", desc: "100+ solved problems (Java, SQL) — DSA mastery.", tags: ["Java", "SQL", "Algorithms"], imgPlaceholder: "https://trypear.ai/images/leetcode.png" }
-  ];
-  function handleImageError(imgElement) {
-    if (!imgElement) return;
-    const container = imgElement.parentElement;
-    const fallbackDiv = document.createElement('div');
-    fallbackDiv.className = 'fallback-icon';
-    fallbackDiv.innerHTML = '<i class="fas fa-code"></i>';
-    if (container) {
-      imgElement.style.display = 'none';
-      if (!container.querySelector('.fallback-icon')) {
-        container.appendChild(fallbackDiv);
-      }
-    }
-  }
-  function saveProfileImage(imageDataUrl) {
-    if (imageDataUrl) {
-      localStorage.setItem('ayanProfileImage', imageDataUrl);
-    }
-  }
-  function loadProfileImage() {
-    return localStorage.getItem('ayanProfileImage');
-  }
-  function HomePage() {
-    // Get saved image from localStorage or use default Ayan.png
-    const savedImage = loadProfileImage();
-    // Use Ayan.png as default if no saved image exists
-    const defaultImage = "Ayan.png";
-    const profileImageSrc = savedImage && savedImage !== 'null' ? savedImage : defaultImage;
-    
-    return `
-      <div style="padding: 0.5rem;">
-        <div class="flashcard">
-          <div class="hero-flex">
-            <div style="flex: 1;">
-              <h1 style="font-size: 3rem; font-weight: 800; color: #0a2540;">Mohd Ayan Siddiqui</h1>
-              <p style="font-size: 1.3rem; margin: 1rem 0; color: #2c3e66;">Full-Stack Developer • ML Engineer • 100+ LeetCode</p>
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="${leetcodeUrl}" target="_blank" class="btn-primary"><i class="fab fa-leetcode"></i> LeetCode</a>
-                <a href="${githubUrl}" target="_blank" class="btn-outline"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#login" class="btn-primary" id="homeConnectBtn"><i class="fas fa-handshake"></i> Get Connected</a>
-              </div>
-              <div style="margin-top: 1.5rem;"><i class="fas fa-phone"></i> ${personalPhone} &nbsp;|&nbsp; <i class="fas fa-envelope"></i> ${personalEmail}</div>
-            </div>
-            <div class="avatar-large" id="homeAvatarContainer">
-              <img id="homeProfileImg" src="${profileImageSrc}" alt="Ayan" onerror="this.src='https://ui-avatars.com/api/?name=Ayan&background=2a5f8a&color=fff'">
-            </div>
-          </div>
-        </div>
+    // LocalStorage helpers for profile image persistence
+    function saveProfileImage(dataUrl) { if (dataUrl) localStorage.setItem('ayanProfileImage', dataUrl); }
+    function loadProfileImage() { return localStorage.getItem('ayanProfileImage'); }
 
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-trophy"></i> Featured Projects</h2>
-          <div class="project-link"><a href="${sentimentAnalysisUrl}" target="_blank"><i class="fas fa-brain"></i> 🔍 Sentiment Analysis Model (ML) — Real-time text emotion detection</a></div>
-          <div class="project-link"><a href="${inventoryManagementUrl}" target="_blank"><i class="fas fa-boxes"></i> 📦 Smart Inventory Management System — Speak & Snap Store</a></div>
-        </div>
-
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-user"></i> About Me — Quick Glance</h2>
-          <p>Passionate MERN developer & ML enthusiast with 100+ LeetCode solutions. <strong>SIH 2025 Qualified</strong> | <strong>Tech Expo 2025, 2026</strong> | Multiple hackathon wins.</p>
-          <div style="margin-top: 1.2rem;"><a href="#about" class="btn-outline" id="gotoAbout">Explore full journey →</a></div>
-        </div>
-
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-cogs"></i> Technical Arsenal</h2>
-          <div class="skills-grid" style="max-height: 550px; overflow-y: auto;">
-            ${skillsDetailed.slice(0,4).map(skill => `
-              <div class="skill-card">
-                <div class="img-container-rounded">
-                  <img src="${skill.imgPlaceholder}" alt="${skill.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'fallback-icon\\'><i class=\\'fas fa-code\\'></i></div>'">
+    // Home Page Component (optimized)
+    function HomePage() {
+      const savedImage = loadProfileImage();
+      const defaultImage = "Ayan.png";
+      const profileSrc = (savedImage && savedImage !== 'null') ? savedImage : defaultImage;
+      return `
+        <div>
+          <div class="flashcard">
+            <div class="hero-flex">
+              <div>
+                <h1>Mohd Ayan Siddiqui</h1>
+                <p style="font-size:1rem; margin:0.8rem 0;">Full-Stack Developer • ML Engineer • 100+ LeetCode</p>
+                <div style="display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center;">
+                  <a href="${leetcodeUrl}" target="_blank" class="btn-primary" rel="noopener"><i class="fab fa-leetcode"></i> LeetCode</a>
+                  <a href="${githubUrl}" target="_blank" class="btn-outline" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                  <a href="#login" class="btn-primary" id="homeConnectBtn"><i class="fas fa-handshake"></i> Connect</a>
                 </div>
-                <div class="skill-title">${skill.name}</div>
-                <p class="skill-desc">${skill.desc}</p>
+                <div style="margin-top:1rem; font-size:0.85rem;"><i class="fas fa-phone"></i> ${personalPhone}<br><i class="fas fa-envelope"></i> ${personalEmail}</div>
               </div>
-            `).join('')}
-          </div>
-          <div style="margin-top: 1rem; text-align: center;"><a href="#skills" class="btn-primary" id="gotoSkills">View all skills →</a></div>
-        </div>
-
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-handshake"></i> Get Connected</h2>
-          <p>Share your details and I'll reach out within 24h for collaborations, mentoring, or project discussions.</p>
-          <div style="margin-top: 1rem;"><a href="#login" class="btn-primary" id="gotoLogin">Fill connection form →</a></div>
-        </div>
-      </div>
-    `;
-  }
-  function AboutPage() {
-    return `
-      <div>
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-user-astronaut"></i> Who Am I?</h2>
-          <p style="font-size: 1.1rem; line-height: 1.6;">I'm Mohd Ayan Siddiqui, a passionate Full-Stack Developer and Machine Learning Engineer based in India. My journey in tech started with a curiosity for how things work, and today I build intelligent systems that solve real-world problems. I specialize in the MERN stack for scalable web apps and Python-based ML models for predictive analytics.</p>
-        </div>
-
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-medal"></i> Major Achievements</h2>
-          <div class="achievement-badge"><i class="fas fa-trophy" style="color:#ffd966;"></i> <strong>🏆 SIH 2025 Qualified</strong> — Smart India Hackathon 2025 qualified for Initial 2 rounds.</div>
-          <div class="achievement-badge"><i class="fas fa-award"></i> <strong>📅 Tech Expo 2025 & 2026</strong> — Showcased innovative project prototypes at university-level tech exhibitions.</div>
-          <div class="achievement-badge"><i class="fas fa-code-branch"></i> <strong>🚀 Hackathon Qualified</strong> — Deployed multiple full-stack and ML projects in 24-hour hackathons, winning accolades for best innovation.</div>
-          <div class="achievement-badge"><i class="fas fa-chart-line"></i> <strong>📊 LeetCode Milestone</strong> — 100+ problems solved using Java & SQL, consistent DSA practice.</div>
-        </div>
-
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-project-diagram"></i> Featured Projects</h2>
-          <div class="project-link"><a href="${sentimentAnalysisUrl}" target="_blank"><i class="fas fa-brain"></i> Sentiment Analysis Model (ML) — Real-time text emotion detection using NLP</a></div>
-          <div class="project-link"><a href="${inventoryManagementUrl}" target="_blank"><i class="fas fa-boxes"></i> Smart Inventory Management System — Speak & Snap Store with voice/image recognition</a></div>
-          <p style="margin-top: 1rem;">🔹 <strong>Other notable builds:</strong> LLM-powered document summarizer, Real-time chat app (MERN + Socket.io), E-commerce dashboard with analytics.</p>
-        </div>
-
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Technical Journey & Vision</h2>
-          <p>With expertise across the full stack and emerging AI technologies, I aim to bridge the gap between cutting-edge research and practical applications. I've contributed to open-source, mentored junior developers, and constantly upskill through certifications and hands-on building. My goal is to create technology that is accessible, intelligent, and impactful.</p>
-          <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="${leetcodeUrl}" target="_blank" class="btn-primary"><i class="fab fa-leetcode"></i> LeetCode Profile</a>
-            <a href="${githubUrl}" target="_blank" class="btn-outline"><i class="fab fa-github"></i> GitHub Repos</a>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  function SkillsPage() {
-    return `
-      <div>
-        <h2 class="section-title"><i class="fas fa-cog fa-spin"></i> Complete Tech Stack</h2>
-        <div class="skills-grid">
-          ${skillsDetailed.map(skill => `
-            <div class="skill-card">
-              <div class="img-container-rounded">
-                <img src="${skill.imgPlaceholder}" alt="${skill.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'fallback-icon\\'><i class=\\'fas fa-code\\'></i></div>'">
+              <div class="avatar-large" id="homeAvatarContainer">
+                <img id="homeProfileImg" src="${profileSrc}" alt="Ayan Siddiqui" loading="eager" width="200" height="200" onerror="this.src='https://ui-avatars.com/api/?name=Ayan&background=2a5f8a&color=fff'">
               </div>
-              <div class="skill-title">${skill.name}</div>
-              <p class="skill-desc">${skill.desc}</p>
-              <div class="tech-tags">${skill.tags.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
             </div>
-          `).join('')}
+          </div>
+          <div class="flashcard">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> Featured Projects</h2>
+            <div class="project-link"><a href="${sentimentAnalysisUrl}" target="_blank" rel="noopener"><i class="fas fa-brain"></i> Sentiment Analysis (ML) — Real-time NLP</a></div>
+            <div class="project-link"><a href="${inventoryManagementUrl}" target="_blank" rel="noopener"><i class="fas fa-boxes"></i> Smart Inventory Mgmt — Speak & Snap</a></div>
+          </div>
+          <div class="flashcard">
+            <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
+            <p>MERN & ML enthusiast. <strong>SIH 2025 Qualified</strong> | <strong>Tech Expo 2025,2026</strong> | Hackathon winner.</p>
+            <div style="margin-top:1rem;"><a href="#about" class="btn-outline" id="gotoAbout">Full journey →</a></div>
+          </div>
+          <div class="flashcard">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Tech Arsenal</h2>
+            <div class="skills-grid">
+              ${skillsDetailed.slice(0,4).map(s => `<div class="skill-card"><div class="img-container-rounded"><img src="${s.img}" alt="${s.name}" loading="lazy" onerror="this.style.display='none'"></div><div class="skill-title">${s.name}</div><p class="skill-desc">${s.desc}</p></div>`).join('')}
+            </div>
+            <div style="margin-top:1rem; text-align:center;"><a href="#skills" class="btn-primary" id="gotoSkills">All skills →</a></div>
+          </div>
+          <div class="flashcard">
+            <h2 class="section-title"><i class="fas fa-handshake"></i> Get Connected</h2>
+            <p>Share your details — I'll reach out within 24h.</p>
+            <div style="margin-top:1rem;"><a href="#login" class="btn-primary" id="gotoLogin">Fill form →</a></div>
+          </div>
         </div>
-      </div>
-    `;
-  }
-  function ContactPage() {
-    return `
-      <div>
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-paper-plane"></i> Let's Connect</h2>
-          <p><i class="fas fa-phone-alt"></i> <strong>📞 Phone / WhatsApp:</strong> ${personalPhone}</p>
-          <p><i class="fas fa-envelope"></i> <strong>Email:</strong> ${personalEmail}</p>
-          <p><i class="fab fa-github"></i> <strong>GitHub:</strong> <a href="${githubUrl}" target="_blank" style="color:#2a5f8a;">github.com/mdayansidd144</a></p>
-          <p><i class="fab fa-leetcode"></i> <strong>LeetCode:</strong> <a href="${leetcodeUrl}" target="_blank" style="color:#2a5f8a;">leetcode.com/u/mohdayan-sidd144/</a></p>
-        </div>
-
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-clock"></i> Availability</h2>
-          <p>📍 <strong>Location:</strong> India (Remote / Hybrid)</p>
-          <p>⏰ <strong>Response Time:</strong> Within 24 hours</p>
-          <p>💼 <strong>Open for:</strong> Freelance projects, Full-time roles, Tech collaborations, Mentoring sessions</p>
-          <p>🌟 <strong>Best time to connect:</strong> Weekdays 10 AM - 8 PM IST</p>
-        </div>
-
-        <div class="flashcard">
-          <h2 class="section-title"><i class="fas fa-handshake"></i> Collaboration Interests</h2>
-          <p>🤝 MERN Stack Development | 🤖 Machine Learning & LLM Integration | 📱 Full-Web Applications | 🎓 Open Source Contributions | 🚀 Hackathon Teamups</p>
-          <div style="margin-top: 1.5rem;"><a href="#login" class="btn-primary" id="contactConnectTrigger"><i class="fas fa-id-card"></i> Share your details to collaborate</a></div>
-        </div>
-      </div>
-    `;
-  }
-
-  function LoginPage() {
-    return `
-      <div class="flashcard" style="max-width: 600px; margin: 0 auto;">
-        <h2 class="section-title"><i class="fas fa-handshake"></i> Get Connected with Ayan</h2>
-        <p>Fill the form — I'll personally reach out within 24h 📞</p>
-        <form id="connectForm">
-          <input class="input-premium" type="text" id="connName" placeholder="Full Name *" required>
-          <input class="input-premium" type="email" id="connEmail" placeholder="Email Address *" required>
-          <input class="input-premium" type="password" id="connPassword" placeholder="Password *" required>
-          <input class="input-premium" type="tel" id="connPhone" placeholder="Your Phone Number *" value="+91" required>
-          <button type="submit" class="btn-primary" style="width:100%; justify-content:center;"><i class="fas fa-paper-plane"></i> Submit & Connect</button>
-          <div id="connectMsg" style="margin-top:1rem;"></div>
-        </form>
-        <div style="margin-top: 1.5rem; background:rgba(42, 95, 138, 0.1); border-radius: 28px; padding:1rem; text-align:center;">
-          <i class="fas fa-phone"></i> Or call me directly: <strong>${personalPhone}</strong>
-        </div>
-      </div>
-    `;
-  }
-
-  let currentPage = "home";
-
-  function renderPage() {
-    const appRoot = document.getElementById("app-root");
-    if (!appRoot) return;
-    let content = "";
-    switch(currentPage) {
-      case "home": content = HomePage(); break;
-      case "about": content = AboutPage(); break;
-      case "skills": content = SkillsPage(); break;
-      case "contact": content = ContactPage(); break;
-      case "login": content = LoginPage(); break;
-      default: content = HomePage();
-    }
-    appRoot.innerHTML = content;
-    if (currentPage === "home") {
-      const avatarDiv = document.getElementById("homeAvatarContainer");
-      if (avatarDiv && !document.getElementById("homeUploadBtn")) {
-        const uploadBtn = document.createElement("button");
-        uploadBtn.id = "homeUploadBtn";
-        uploadBtn.innerHTML = '<i class="fas fa-camera"></i> Change My Photo';
-        uploadBtn.className = "btn-outline";
-        uploadBtn.style.marginTop = "15px";
-        uploadBtn.style.fontSize = "0.85rem";
-        uploadBtn.style.padding = "0.5rem 1.2rem";
-        const parent = avatarDiv.parentNode;
-        const wrapper = document.createElement("div");
-        wrapper.style.display = "flex";
-        wrapper.style.flexDirection = "column";
-        wrapper.style.alignItems = "center";
-        avatarDiv.parentNode.insertBefore(wrapper, avatarDiv);
-        wrapper.appendChild(avatarDiv);
-        wrapper.appendChild(uploadBtn);
-        const fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.accept = "image/*";
-        fileInput.style.display = "none";
-        fileInput.id = "homeFileInput";
-        wrapper.appendChild(fileInput);
-        uploadBtn.addEventListener("click", () => fileInput.click());
-        fileInput.addEventListener("change", (e) => {
-          const file = e.target.files[0];
-          if (file) {
-            const reader = new FileReader();
-            reader.onload = (ev) => {
-              const imgElem = document.getElementById("homeProfileImg");
-              if (imgElem) {
-                const imageDataUrl = ev.target.result;
-                imgElem.src = imageDataUrl;
-                // Save to localStorage so it persists across page changes and refreshes
-                saveProfileImage(imageDataUrl);
-              }
-            };
-            reader.readAsDataURL(file);
-          }
-        });
-      }
-    }
-    if (currentPage === "login") {
-      const form = document.getElementById("connectForm");
-      if (form) {
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const name = document.getElementById("connName").value.trim();
-          const email = document.getElementById("connEmail").value.trim();
-          const pass = document.getElementById("connPassword").value.trim();
-          const phone = document.getElementById("connPhone").value.trim();
-          const msgDiv = document.getElementById("connectMsg");
-          if (!name || !email || !pass || !phone) {
-            msgDiv.innerHTML = "<span style='color:#b91c1c;'>❌ All fields required.</span>";
-            return;
-          }
-          if (!email.includes("@")) { msgDiv.innerHTML = "<span style='color:#b91c1c;'>❌ Valid email needed.</span>"; return; }
-          localStorage.setItem("ayan_lead_" + Date.now(), JSON.stringify({name, email, phone}));
-          msgDiv.innerHTML = `<div style="background:#d4e4ff; padding:0.8rem; border-radius:24px;">✅ Thanks ${name}! Ayan will contact you at ${phone} / ${email}. Meanwhile call ${personalPhone}</div>`;
-          form.reset();
-          document.getElementById("connPhone").value = "+91";
-        });
-      }
+      `;
     }
 
-    // Navigation handlers
-    document.querySelectorAll("#gotoAbout").forEach(btn => btn.addEventListener("click", (e) => { e.preventDefault(); currentPage = "about"; renderPage(); window.history.pushState({},"","#about"); updateActiveNav(); }));
-    document.querySelectorAll("#gotoSkills").forEach(btn => btn.addEventListener("click", (e) => { e.preventDefault(); currentPage = "skills"; renderPage(); window.history.pushState({},"","#skills"); updateActiveNav(); }));
-    document.querySelectorAll("#gotoLogin, #homeConnectBtn, #contactConnectTrigger").forEach(btn => {
-      if(btn) btn.addEventListener("click", (e) => { e.preventDefault(); currentPage = "login"; renderPage(); window.history.pushState({},"","#login"); updateActiveNav(); });
-    });
+    function AboutPage() {
+      return `
+        <div>
+          <div class="flashcard"><h2 class="section-title"><i class="fas fa-user-astronaut"></i> Who Am I?</h2><p>Full-Stack Developer & ML Engineer from India. I build intelligent systems with MERN + Python ML.</p></div>
+          <div class="flashcard"><h2 class="section-title"><i class="fas fa-medal"></i> Achievements</h2>
+            <div class="achievement-badge"><strong>🏆 SIH 2025 Qualified</strong> — Smart India Hackathon finalist</div>
+            <div class="achievement-badge"><strong>📅 Tech Expo 2025 & 2026</strong> — Project prototypes showcased</div>
+            <div class="achievement-badge"><strong>🚀 Hackathon Qualified</strong> — Multiple full-stack & ML deployments</div>
+            <div class="achievement-badge"><strong>📊 LeetCode 100+</strong> — Java & SQL mastery</div>
+          </div>
+          <div class="flashcard"><h2 class="section-title"><i class="fas fa-project-diagram"></i> Projects</h2>
+            <div class="project-link"><a href="${sentimentAnalysisUrl}" target="_blank" rel="noopener"><i class="fas fa-brain"></i> Sentiment Analysis Model</a></div>
+            <div class="project-link"><a href="${inventoryManagementUrl}" target="_blank" rel="noopener"><i class="fas fa-boxes"></i> Smart Inventory System</a></div>
+            <p>🔹 LLM summarizer, MERN chat app, analytics dashboards.</p>
+          </div>
+          <div class="flashcard"><h2 class="section-title"><i class="fas fa-graduation-cap"></i> Vision</h2><p>Bridging AI research with practical apps. Open source contributor, mentor, lifelong learner.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.8rem; flex-wrap:wrap;"><a href="${leetcodeUrl}" target="_blank" class="btn-primary" rel="noopener"><i class="fab fa-leetcode"></i> LeetCode</a><a href="${githubUrl}" target="_blank" class="btn-outline" rel="noopener"><i class="fab fa-github"></i> GitHub</a></div>
+          </div>
+        </div>
+      `;
+    }
 
-    gsap.fromTo(".flashcard, .skill-card", 
-      { opacity: 0, y: 35 }, 
-      { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: "back.out(0.5)" }
-    );
-    updateActiveNav();
-  }
+    function SkillsPage() {
+      return `<div><h2 class="section-title"><i class="fas fa-cog fa-spin"></i> Complete Stack</h2><div class="skills-grid">${skillsDetailed.map(s => `<div class="skill-card"><div class="img-container-rounded"><img src="${s.img}" alt="${s.name}" loading="lazy" onerror="this.style.display='none'"></div><div class="skill-title">${s.name}</div><p class="skill-desc">${s.desc}</p><div class="tech-tags">${s.tags.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div></div>`).join('')}</div></div>`;
+    }
 
-  function updateActiveNav() {
-    document.querySelectorAll(".nav-link").forEach(link => {
-      const pg = link.getAttribute("data-page");
-      if (pg === currentPage) link.classList.add("active");
-      else link.classList.remove("active");
-    });
-  }
+    function ContactPage() {
+      return `<div><div class="flashcard"><h2 class="section-title"><i class="fas fa-paper-plane"></i> Let's Connect</h2><p><i class="fas fa-phone-alt"></i> ${personalPhone}</p><p><i class="fas fa-envelope"></i> ${personalEmail}</p><p><i class="fab fa-github"></i> <a href="${githubUrl}" target="_blank" style="color:#2a5f8a;">github.com/mdayansidd144</a></p><p><i class="fab fa-leetcode"></i> <a href="${leetcodeUrl}" target="_blank" style="color:#2a5f8a;">leetcode.com/u/mohdayan-sidd144/</a></p></div><div class="flashcard"><h2 class="section-title"><i class="fas fa-clock"></i> Availability</h2><p>📍 India (Remote) | ⏰ 24h response | 💼 Freelance/Full-time</p></div><div class="flashcard"><h2 class="section-title"><i class="fas fa-handshake"></i> Collaborate</h2><p>MERN | ML | LLM | Open Source | Hackathons</p><div style="margin-top:1rem;"><a href="#login" class="btn-primary" id="contactConnectTrigger">Share details →</a></div></div></div>`;
+    }
 
-  function setupRouting() {
-    document.querySelectorAll(".nav-link").forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
+    function LoginPage() {
+      return `<div class="flashcard" style="max-width:500px; margin:0 auto;"><h2 class="section-title"><i class="fas fa-handshake"></i> Connect with Ayan</h2><p>Fill form — I'll reach out within 24h</p><form id="connectForm"><input class="input-premium" type="text" id="connName" placeholder="Full Name *" required><input class="input-premium" type="email" id="connEmail" placeholder="Email *" required><input class="input-premium" type="password" id="connPassword" placeholder="Password *" required><input class="input-premium" type="tel" id="connPhone" placeholder="Phone *" value="+91" required><button type="submit" class="btn-primary" style="width:100%"><i class="fas fa-paper-plane"></i> Submit</button><div id="connectMsg" style="margin-top:1rem;"></div></form><div style="margin-top:1rem; background:rgba(42,95,138,0.1); border-radius:28px; padding:0.8rem; text-align:center;"><i class="fas fa-phone"></i> Or call: ${personalPhone}</div></div>`;
+    }
+
+    let currentPage = "home";
+    let isRendering = false;
+
+    function updateActiveNav() {
+      document.querySelectorAll(".nav-link").forEach(link => {
         const page = link.getAttribute("data-page");
-        if (page) { currentPage = page; renderPage(); window.history.pushState({}, "", `#${page}`); }
+        if (page === currentPage) link.classList.add("active");
+        else link.classList.remove("active");
       });
-    });
-    window.addEventListener("popstate", () => {
-      const hash = window.location.hash.slice(1);
-      if (["home","about","skills","contact","login"].includes(hash)) currentPage = hash;
-      else currentPage = "home";
-      renderPage();
-    });
-    const initHash = window.location.hash.slice(1);
-    if (initHash && ["home","about","skills","contact","login"].includes(initHash)) currentPage = initHash;
-    renderPage();
-  }
+    }
 
-  setupRouting();
+    function attachImageUpload() {
+      const avatarDiv = document.getElementById("homeAvatarContainer");
+      if (!avatarDiv || document.getElementById("homeUploadBtn")) return;
+      const uploadBtn = document.createElement("button");
+      uploadBtn.id = "homeUploadBtn";
+      uploadBtn.innerHTML = '<i class="fas fa-camera"></i> Change Photo';
+      uploadBtn.className = "btn-outline";
+      uploadBtn.style.marginTop = "12px";
+      uploadBtn.style.fontSize = "0.75rem";
+      uploadBtn.style.padding = "0.4rem 1rem";
+      const parent = avatarDiv.parentNode;
+      const wrapper = document.createElement("div");
+      wrapper.style.display = "flex";
+      wrapper.style.flexDirection = "column";
+      wrapper.style.alignItems = "center";
+      avatarDiv.parentNode.insertBefore(wrapper, avatarDiv);
+      wrapper.appendChild(avatarDiv);
+      wrapper.appendChild(uploadBtn);
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.accept = "image/*";
+      fileInput.style.display = "none";
+      fileInput.id = "homeFileInput";
+      wrapper.appendChild(fileInput);
+      uploadBtn.addEventListener("click", () => fileInput.click());
+      fileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            const imgElem = document.getElementById("homeProfileImg");
+            if (imgElem) {
+              imgElem.src = ev.target.result;
+              saveProfileImage(ev.target.result);
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    function attachLoginHandler() {
+      const form = document.getElementById("connectForm");
+      if (!form) return;
+      form.removeEventListener("submit", window._loginSubmit);
+      window._loginSubmit = (e) => {
+        e.preventDefault();
+        const name = document.getElementById("connName")?.value.trim() || "";
+        const email = document.getElementById("connEmail")?.value.trim() || "";
+        const pass = document.getElementById("connPassword")?.value.trim() || "";
+        const phone = document.getElementById("connPhone")?.value.trim() || "";
+        const msgDiv = document.getElementById("connectMsg");
+        if (!name || !email || !pass || !phone) {
+          msgDiv.innerHTML = "<span style='color:#b91c1c;'>❌ All fields required.</span>";
+          return;
+        }
+        if (!email.includes("@")) { msgDiv.innerHTML = "<span style='color:#b91c1c;'>❌ Valid email needed.</span>"; return; }
+        localStorage.setItem("ayan_lead_" + Date.now(), JSON.stringify({name, email, phone}));
+        msgDiv.innerHTML = `<div style="background:#d4e4ff; padding:0.6rem; border-radius:20px;">✅ Thanks ${name}! Ayan will contact you at ${phone}.</div>`;
+        form.reset();
+        const phoneField = document.getElementById("connPhone");
+        if (phoneField) phoneField.value = "+91";
+      };
+      form.addEventListener("submit", window._loginSubmit);
+    }
+
+    function attachNavHandlers() {
+      document.querySelectorAll("#gotoAbout, #gotoSkills, #gotoLogin, #homeConnectBtn, #contactConnectTrigger").forEach(btn => {
+        if (!btn) return;
+        btn.removeEventListener("click", window._navHandler);
+        window._navHandler = (e) => {
+          e.preventDefault();
+          const id = btn.id;
+          if (id === "gotoAbout" || btn.getAttribute("id") === "gotoAbout") currentPage = "about";
+          else if (id === "gotoSkills" || btn.getAttribute("id") === "gotoSkills") currentPage = "skills";
+          else currentPage = "login";
+          renderPage();
+          window.history.pushState({}, "", `#${currentPage}`);
+        };
+        btn.addEventListener("click", window._navHandler);
+      });
+    }
+
+    function renderPage() {
+      if (isRendering) return;
+      isRendering = true;
+      const appRoot = document.getElementById("app-root");
+      if (!appRoot) return;
+      let content = "";
+      if (currentPage === "home") content = HomePage();
+      else if (currentPage === "about") content = AboutPage();
+      else if (currentPage === "skills") content = SkillsPage();
+      else if (currentPage === "contact") content = ContactPage();
+      else content = LoginPage();
+      appRoot.innerHTML = content;
+      if (currentPage === "home") attachImageUpload();
+      if (currentPage === "login") attachLoginHandler();
+      attachNavHandlers();
+      updateActiveNav();
+      if (window.gsap) {
+        gsap.fromTo(".flashcard, .skill-card", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, clearProps: "all" });
+      }
+      isRendering = false;
+    }
+
+    function setupRouting() {
+      const navLinks = document.querySelectorAll(".nav-link");
+      navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const page = link.getAttribute("data-page");
+          if (page) { currentPage = page; renderPage(); window.history.pushState({}, "", `#${page}`); }
+        });
+      });
+      window.addEventListener("popstate", () => {
+        const hash = window.location.hash.slice(1);
+        if (["home","about","skills","contact","login"].includes(hash)) currentPage = hash;
+        else currentPage = "home";
+        renderPage();
+      });
+      const initHash = window.location.hash.slice(1);
+      if (initHash && ["home","about","skills","contact","login"].includes(initHash)) currentPage = initHash;
+      renderPage();
+    }
+    setupRouting();
+  })();
 </script>
 </body>
 </html>
